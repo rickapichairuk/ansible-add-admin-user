@@ -1,0 +1,39 @@
+galaxy_info:
+  author: Rick Apichairuk
+  description: Ansible role to add an admin user who can sudo all commands
+  license: BSD
+  min_ansible_version: 1.2
+  platforms:
+  - name: OpenBSD
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+  - name: MacOSX
+    versions:
+    - all
+  - name: GenericBSD
+    versions:
+    - all
+  - name: Void Linux
+    versions:
+    - all
+  - name: GenericLinux
+    versions:
+    - all
+  - name: ArchLinux
+    versions:
+    - all
+  - name: FreeBSD
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  galaxy_tags:
+    - sudo
+dependencies: []
