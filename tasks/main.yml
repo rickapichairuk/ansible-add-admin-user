@@ -7,13 +7,13 @@
 
 - name: Add admin user's ssh public key to authorized_keys
   authorized_key:
-    user: {{username}}
-    key: {{key_url}}
+    user: "{{username}}"
+    key:  "{{key_url}}"
   when: use_key_from_url == true
 
 - name: Add admin user's ssh public key to authorized_keys
   authorized_key:
-    user: {{username}}
+    user: "{{username}}"
     key: "{{ lookup('file', key_file) }}"
   when: use_key_from_file == true
 
