@@ -1,21 +1,21 @@
 - name: Add admin user account
-  action: user name={{username}}
+  action: user name={{add_admin_user.admin.username}}
 
 - name: Remove sudo group rights
   action: lineinfile dest=/etc/sudoers regexp="^%sudo" state=absent
-  when: remove_all_other_sudo_rights == true
+  when: add_admin_user.remove_all_other_sudo_rights == true
 
 - name: Add admin user's ssh public key to authorized_keys
   authorized_key:
-    user: "{{username}}"
-    key:  "{{key_url}}"
-  when: use_key_url == true
+    user: "{{add_admin_user.admin.username}}"
+    key:  "{{add_admin_user.admin.key_url}}"
+  when: add_admin_user.use_key_url == true
 
 - name: Add admin user's ssh public key to authorized_keys
   authorized_key:
-    user: "{{username}}"
-    key: "{{ lookup('file', key_file) }}"
-  when: use_key_file == true
+    user: "{{add_admin_user.admin.username}}"
+    key: "{{ lookup('file', add_admin_user.admin.key_file) }}"
+  when: add_admin_user.use_key_file == true
 
 - name: Add admin user to sudoers
-  action: lineinfile dest=/etc/sudoers regexp="{{username}} ALL" line="{{username}} ALL=(ALL) NOPASSWD:ALL" state=present
+  action: lineinfile dest=/etc/sudoers regexp="{{add_admin_user.admin.username}} ALL" line="{{add_admin_user.admin.username}} ALL=(ALL) NOPASSWD:ALL" state=present
